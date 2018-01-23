@@ -1,14 +1,15 @@
 from nio.block.terminals import DEFAULT_TERMINAL
 from nio.signal.base import Signal
 from nio.testing.block_test_case import NIOBlockTestCase
-from ..gdax_block import Gdax
+from ..gdax_place_order_block import GdaxPlaceOrder
+from ..gdax_get_order_block import GdaxGetOrder
 
 
 class TestGdax(NIOBlockTestCase):
 
     def test_process_signals(self):
         """Signals pass through block unmodified."""
-        blk = Gdax()
+        blk = GdaxPlaceOrder()
         self.configure_block(blk, {})
         blk.start()
         blk.process_signals([Signal({"hello": "nio"})])
